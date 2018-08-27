@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="toppad">
+                <div class="panel panel-info">
+                    <div class="panel-heading text-center">
+                        <h3 class="panel-title">{{ instiServObj.InstituteDetails.institute_name }}</h3>
+                    </div>
+                    <div class="panel-body clearfix">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4>About Us:</h4>
+                                <div [innerHTML]="instiServObj.InstituteDetails.about_institute"></div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="text-center">
+                                    <button [routerLink]="['../','course']" class="btn btn-primary">Offered Courses</button>
+                                    <!-- <button [routerLink]="['../','enquiry']" class="btn btn-info">Enquiry</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                <h3>Courses</h3>
+            </div>
+            <ul class="course-list">
+                <li class="course-item" *ngFor="let courseItem of instiServObj.CourseDetails">
+                    <div class="course-img-wrapper">
+                        <img [src]="instiServObj.url + '/images/' + courseItem.course_logo" class="img-responsive" [alt]="courseItem.course_name">
+                        <div class="view">
+                            <a (click)=onCourseView(courseItem.cid,courseItem.course_name) class="view-details">View</a>
+                            <!-- <a href="institute-course-enroll.html" class="view-details">Enroll</a> -->
+                        </div>
+                    </div>
+                    <div class="title">
+                        <h3><a (click)=onCourseView(courseItem.cid,courseItem.course_name)>{{courseItem.course_name}}</a></h3>
+                    </div>
+                    <div class="sticker sticker-new"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                <h3>Gallery</h3>
+            </div>
+            <ul class=" course-list ">
+                <li class="course-item " *ngFor="let galleryItem of instiServObj.GalleryDetails ">
+                    <div class="course-img-wrapper ">
+                        <img [src]="instiServObj.url + '/images/' + galleryItem.img_file_name" class="img-responsive" [alt]="galleryItem.img_file_name">
+                    </div>
+                    <div class="title ">
+                        <h3>{{galleryItem.title}}</h3>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
